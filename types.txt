@@ -1,0 +1,5 @@
+Types of questions:
+- General questions: such questions require an answer Yes/No (e.g. "Did Mike create an issue yesterday?");
+- "Listed" questions: answers for these questions are supposed to be a list (e.g. "What are the comments created by Mike?");
+- Special questions: some specific information (e.g. date, location, amount etc.) is required (e.g. "When did Mike create his first issue?");
+- Subject questions: questions about subjects (e.g. "Who closed issue 253?").
