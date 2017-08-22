@@ -39,14 +39,31 @@ def select(cn):
 def filter(p,v,op):
     if isinstance(v,str):
         r=currentQuery.find(v)
-        if (r==-1):
+        if (r==-1 and v!="*"):
              raise ValueError(v)
 
-    assert op in ['in',"<",">",">=","<=","count>","count<","count=="]
+    assert op in ['in','not in','in all','not in all',"<",">",">=","<=","count>","count<","count=="]
     assert isinstance(p,vocabulary.PropertyTerm);
     if not isinstance(v,QueryModel) and not isinstance(v, str):
         raise ValueError(v);
     return QueryModel()
+
+def orderBy(p,op):
+
+    assert op in ["<",">"]
+    assert isinstance(p,vocabulary.PropertyTerm);
+    return QueryModel()
+
+def count_compare(v0,v,op):
+
+    assert op in ["<",">",">=","<=","="]
+    if not isinstance(v,QueryModel) and not isinstance(v, str)and not isinstance(v, int):
+        raise ValueError(v);
+    if not isinstance(v0,QueryModel) and not isinstance(v0, str):
+        raise ValueError(v);
+
+    return QueryModel()
+
 def filter_related(v):
     if isinstance(v,str):
         r=currentQuery.find(v)
@@ -55,19 +72,27 @@ def filter_related(v):
     if not isinstance(v,QueryModel) and not isinstance(v, str):
         raise ValueError(v);
     assert True;
-def count(v):
-    assert isinstance(v,QueryModel)
-
+def count():
+    return
+def inverseOf(p):
+    assert isinstance(p,vocabulary.PropertyTerm);
+    return p;
 
 symbols={
     "SELECT": select,
     "FILTER": filter,
+    "ORDER_BY": orderBy,
+    "COUNT_COMPARE": count_compare,
     "FILTER_RELATED": filter_related,
     "set": setfunc,
     "or": orFunc,
-    "and": andFunc,
+    #"and": andFunc,
+    "intersect": andFunc,
+    "inverseOf": inverseOf,
     "not": notFunc,
     "COUNT":count,
+    "FIRST":count,
+    "LAST":count,
     "PROPERTY" : propFunc
 }
 
@@ -126,7 +151,12 @@ with open(loc+"/questions.txt") as f:
         if (line[0]=='!'):
             ont=vocabulary.Vocabulary(loc+"/"+line[1:len(line)-1])
             continue
+        if not line.strip():
+            continue;
+        if (line[0]=='#'):
+            continue;
         vl=line.index('=');
+
         question=line[0:vl]
         flow=line[vl+1:len(line)]
         #try:
