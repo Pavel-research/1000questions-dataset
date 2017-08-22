@@ -34,4 +34,7 @@ instances passed in `value_or_query` argument
 
 * `set(query_or_value,query_or_value1,...)` union of values or query results
 
+* `FILTER_QUERY(q,value_or_query,operator)` - extended version of `FILTER` instead of filteting by property value filters 
+   against results of query which is executed for each of filtered elements
+
 "and": andFunc,
