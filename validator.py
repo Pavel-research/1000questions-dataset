@@ -44,14 +44,26 @@ def filter(p,v,op):
 
     assert op in ['in','not in','in all','not in all',"<",">",">=","<=","count>","count<","count=="]
     assert isinstance(p,vocabulary.PropertyTerm);
-    if not isinstance(v,QueryModel) and not isinstance(v, str):
+    if not isinstance(v,QueryModel) and not isinstance(v, str)and not isinstance(v, int):
+        raise ValueError(v);
+    return QueryModel()
+
+def filterQuery(p,v,op):
+    if isinstance(v,str):
+        r=currentQuery.find(v)
+        if (r==-1 and v!="*"):
+            raise ValueError(v)
+
+    assert op in ['in','not in','in all','not in all',"<",">",">=","<=","count>","count<","count=="]
+    assert isinstance(p,QueryModel);
+    if not isinstance(v,QueryModel) and not isinstance(v, str)and not isinstance(v, int):
         raise ValueError(v);
     return QueryModel()
 
 def orderBy(p,op):
 
-    assert op in ["<",">"]
-    assert isinstance(p,vocabulary.PropertyTerm);
+    assert op in ["<",">","count>","count<"]
+    assert isinstance(p,vocabulary.PropertyTerm) or isinstance(p,QueryModel);
     return QueryModel()
 
 def count_compare(v0,v,op):
@@ -77,10 +89,13 @@ def count():
 def inverseOf(p):
     assert isinstance(p,vocabulary.PropertyTerm);
     return p;
+def orderByPassCount(s):
+    return QueryModel();
 
 symbols={
     "SELECT": select,
     "FILTER": filter,
+    "FILTER_QUERY": filter,
     "ORDER_BY": orderBy,
     "COUNT_COMPARE": count_compare,
     "FILTER_RELATED": filter_related,
@@ -91,9 +106,14 @@ symbols={
     "inverseOf": inverseOf,
     "not": notFunc,
     "COUNT":count,
+    "CONTEXT":count,
     "FIRST":count,
+    "MAX":count,
+    "MIN":count,
     "LAST":count,
-    "PROPERTY" : propFunc
+    "ORDER_BY_PASSING_COUNT": orderByPassCount,
+    "PROPERTY" : propFunc,
+    "MAP_BY_PROPERTY": inverseOf
 }
 
 class QueryComposer:

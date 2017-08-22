@@ -26,5 +26,12 @@ instances passed in `value_or_query` argument
 
 * `LAST()` returns last element of argument
 
-"set": setfunc,
+* ` MAX()` returns maximum of argument
+
+* `MIN()` returns minumum of argument
+
+* `MAP_BY_PROPERTY(property)` maps input by property same as PROPERTY but with sequencial flow of arguments
+
+* `set(query_or_value,query_or_value1,...)` union of values or query results
+
 "and": andFunc,

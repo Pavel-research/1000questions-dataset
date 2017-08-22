@@ -16,6 +16,7 @@ classTerms:
     properties:
       - owner
       - issues
+      - stars
   Organization:
     extends: NamedEntity
   Label:
@@ -40,6 +41,7 @@ classTerms:
       - assignee
       - repository
       - comments
+      - milestones
   Comment:
      properties:
        - created_at
@@ -89,6 +91,10 @@ propertyTerms:
     range: User
   closed_at:
     range: datetime
+  stars:
+    range: integer
+  milestones:
+    range: Milestone
   number:
     range: integer
   comments:
