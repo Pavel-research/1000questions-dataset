@@ -70,3 +70,5 @@ issues with most comments created by Gleb = SELECT(Issue)=>FILTER_RELATED(SELECT
 issues with most comments not created by Gleb = SELECT(Issue)=>FILTER_RELATED(SELECT(Comment)=>FILTER(created_by,"Gleb","not in"))=>ORDER_BY(comments,">")
 issues that have comments created by Gleb = SELECT(Issue)=>FILTER_RELATED(SELECT(Comment)=>FILTER(created_by,"Gleb","in"))
 comments that are related to issues created by Gleb = SELECT(Comment)=>FILTER_RELATED(SELECT(Issue)=>FILTER(created_by,"Gleb","in"))
+issues without labels =SELECT(Issue)=>FILTER(labels,"*","not in")
+issues without assignee =SELECT(Issue)=>FILTER(assignee,"*","not in")
