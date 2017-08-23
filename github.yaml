@@ -48,10 +48,13 @@ classTerms:
        - updated_at
        - body
        - user
+       - issue
 propertyTerms:
   created:
     inverseOf: user
     range: Issue
+  issue:
+    range: Isssue
   comments:
     range: Comment
   issues:

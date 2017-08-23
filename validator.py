@@ -55,7 +55,7 @@ def filterQuery(p,v,op):
             raise ValueError(v)
 
     assert op in ['in','not in','in all','not in all',"<",">",">=","<=","count>","count<","count=="]
-    assert isinstance(p,QueryModel);
+    assert isinstance(p,QueryModel) or isinstance(p,vocabulary.PropertyTerm);
     if not isinstance(v,QueryModel) and not isinstance(v, str)and not isinstance(v, int):
         raise ValueError(v);
     return QueryModel()
@@ -95,7 +95,7 @@ def orderByPassCount(s):
 symbols={
     "SELECT": select,
     "FILTER": filter,
-    "FILTER_QUERY": filter,
+    "FILTER_QUERY": filterQuery,
     "ORDER_BY": orderBy,
     "COUNT_COMPARE": count_compare,
     "FILTER_RELATED": filter_related,
