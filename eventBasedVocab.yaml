@@ -1,0 +1,30 @@
+#%RAML Vocabulary 0.1
+classTerms:
+  Issue:
+    properties:
+      - name
+      - events
+  Event:
+    properties:
+      - kind
+      - performedBy
+      - when
+  User:
+    properties:
+      - name
+      - from
+propertyTerms:
+  name:
+    range: string
+  events:
+    range: Event
+  kind:
+    range: string
+  performedBy:
+    range: User
+  when:
+    range: datetime
+
+
+
+#issues closed on Monday=SELECT(ISSUES)=>FILTER(events,SELECT(Events)=>FILTER(kind,"closed","in")=>FILTER(when=>),"in")
