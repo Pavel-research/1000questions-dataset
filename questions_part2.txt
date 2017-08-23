@@ -1,0 +1,18 @@
+!github.yaml
+What are the companies of people working on raml-js-parser?
+!raml-http.yaml
+projects
+average number of endpoints in the api
+operations that use ApplicationCreditData
+operations without responses
+operations without payloads in responses
+pageable operations
+endpoints with 'get','put' and 'delete'
+operations that return ApplicationCreditData
+operations that can not consume json
+operations that depend from ApplicationCreditData
+endpoints without operations
+apis ordered by type count
+types with multiple super types
+operations that implement pageable trait
+operations that do not have response with status code in range from 200 to 300
