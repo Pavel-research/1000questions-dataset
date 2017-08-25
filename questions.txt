@@ -115,7 +115,7 @@ issues with comments in range from 5 to 10 = SELECT(Issue)=>FILTER(comments,5,">
 issues that was created from last january to march = SELECT(Issue)=>FILTER(created,"last january",">=")=>FILTER(comments,"march","<=")
 When newest issue in raml-js-parser was created?=SELECT(Issue)=>FILTER_RELATED("raml-js-parser")=>MAP_BY_PROPERTY(created_by)=>MAX()
 What is  newest issue in raml-js-parser?=SELECT(Issue)=>FILTER_RELATED("raml-js-parser")=>ORDER_BY(created_by,">")=>FIRST()
-What are the newest issues in raml-js-parser was created?=SELECT(Issue)=>FILTER_RELATED("raml-js-parser")=>ORDER_BY(created_by,">")
+What are the newest issues in raml-js-parser was created?=SELECT(Issue)=>FILTER_RELATED("raml-js-parser")=>ORDER_BY(created_at,">")
 Who created newest issue?=SELECT(User)=>FILTER(created,SELECT(Issue)=>ORDER_BY(created_by,">")=>FIRST(),"in")
 Who created first issue?=SELECT(User)=>FILTER(created,SELECT(Issue)=>ORDER_BY(created_by,">")=>FIRST(),"in")
 Users who created most of issues=SELECT(User)=>ORDER_BY(MAP_BY_PROPERTY(created)=>COUNT(),">")
