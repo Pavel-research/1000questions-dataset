@@ -1,0 +1,17 @@
+What are the Denis bugs?
+
+Denis -> Denis Denisenko
+bugs  -> issues
+
+When #429 was created
+
+#429 -> #429
+
+was created -> created_at
+
+What is the creation date of #429
+
+creation date -> created_at
+
+date of creation -> created_at
+

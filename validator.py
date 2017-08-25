@@ -92,6 +92,8 @@ def inverseOf(p):
 def orderByPassCount(s):
     return QueryModel();
 
+def top(n):
+    return QueryModel()
 symbols={
     "SELECT": select,
     "FILTER": filter,
@@ -109,12 +111,14 @@ symbols={
     "CONTEXT":count,
     "FIRST":count,
     "MAX":count,
+    "TOP": top,
     "MIN":count,
     "LAST":count,
     "ORDER_BY_PASSING_COUNT": orderByPassCount,
     "PROPERTY" : propFunc,
     "MAP_BY_PROPERTY": inverseOf
 }
+
 
 class QueryComposer:
 
